@@ -1,3 +1,5 @@
-# animal_app
+# Latihan Kuis Praktikum Pemrograman Aplikasi Mobile
 
-A new Flutter project.
+**Nama :** Hera Yola Ardini  
+**NIM  :** 124240111  
+**Plug :** SI-B
