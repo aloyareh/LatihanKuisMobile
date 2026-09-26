@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AnimalDetail()),
+                  MaterialPageRoute(builder: (context) => AnimalDetail(animal: animal,)),
                 );
               },
               child: Padding(
