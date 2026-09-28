@@ -22,13 +22,24 @@ class HomePage extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title: const Text("Konfirmasi"),
+                    backgroundColor: const Color(0xFFF5F5F5),
+                    title: const Text(
+                      "Konfirmasi",
+                      style: TextStyle(
+                        color: Colors.brown,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     content: Text("Apakah kamu yakin akan logout"),
                     actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.brown,
+                          foregroundColor: Colors.white,
+                        ),
                         child: Text("Batal"),
                       ),
                       TextButton(
@@ -42,6 +53,10 @@ class HomePage extends StatelessWidget {
                             ),
                           );
                         },
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.brown,
+                          foregroundColor: Colors.white,
+                        ),
                         child: Text("Logout"),
                       ),
                     ],
