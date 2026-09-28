@@ -9,7 +9,12 @@ class AnimalDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(animal.name)),
+      backgroundColor: Color(0xFFF5F5F5),
+      appBar: AppBar(
+        backgroundColor: Colors.brown,
+        foregroundColor: Colors.white,
+        title: Text(animal.name),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -32,26 +37,37 @@ class AnimalDetail extends StatelessWidget {
             const SizedBox(height: 16),
 
             Text(
-              "Tipe",
+              "Animal Detail",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            Text(animal.type),
 
-            const SizedBox(height: 12),
+            Row(
+              children: [
+                Card(
+                  color: Color(0xFFD7CCC8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text("Tipe: ${animal.type}"),
+                  ),
+                ),
 
-            Text(
-              "Berat",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                Card(
+                  color: Color(0xFFD7CCC8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text("Berat: ${animal.weight} kg"),
+                  ),
+                ),
+
+                Card(
+                  color: Color(0xFFD7CCC8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text("Tinggi: ${animal.height} cm"),
+                  ),
+                ),
+              ],
             ),
-            Text("${animal.weight} kg"),
-
-            const SizedBox(height: 12),
-
-            Text(
-              "Tinggi",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            Text("${animal.height} cm"),
 
             const SizedBox(height: 12),
 
@@ -64,6 +80,7 @@ class AnimalDetail extends StatelessWidget {
               spacing: 8,
               children: animal.habitat.map((habitat) {
                 return Card(
+                  color: Color(0xFFD7CCC8),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(habitat),
@@ -83,6 +100,7 @@ class AnimalDetail extends StatelessWidget {
               spacing: 8,
               children: animal.activities.map((activity) {
                 return Card(
+                  color: Color(0xFFD7CCC8),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(activity),
@@ -99,6 +117,11 @@ class AnimalDetail extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.brown,
+                  foregroundColor: Colors.white,
+                ),
+
                 child: const Text("Kembali"),
               ),
             ),
