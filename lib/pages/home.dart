@@ -10,7 +10,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
+        backgroundColor: Colors.brown,
+        foregroundColor: Colors.white,
         title: Text("Animal List"),
         actions: [
           IconButton(
@@ -50,71 +53,75 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
-          childAspectRatio: 0.8,
-        ),
-        itemCount: dummyAnimals.length,
-        itemBuilder: (context, index) {
-          final animal = dummyAnimals[index];
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 0.8,
+          ),
+          itemCount: dummyAnimals.length,
+          itemBuilder: (context, index) {
+            final animal = dummyAnimals[index];
 
-          return Card(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AnimalDetail(animal: animal),
+            return Card(
+              color: Color(0xFFD7CCC8),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AnimalDetail(animal: animal),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Image.network(
+                          animal.image,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      Text(
+                        animal.name,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 4),
+
+                      Text("Tipe: ${animal.type}"),
+                      Wrap(
+                        spacing: 5,
+                        runSpacing: 5,
+                        children: animal.habitat.map((habitat) {
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Text(habitat),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   ),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        animal.image,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    Text(
-                      animal.name,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    const SizedBox(height: 4),
-
-                    Text("Tipe: ${animal.type}"),
-                    Wrap(
-                      spacing: 5,
-                      runSpacing: 5,
-                      children: animal.habitat.map((habitat) {
-                        return Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(habitat),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
